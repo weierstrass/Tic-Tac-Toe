@@ -7,4 +7,5 @@ RUN apt-get update && apt-get install -y \
 	libudev-dev \
 	libjpeg-dev \
 	libopenal-dev \
-	libflac-dev
+	libflac-dev \
+	libfreetype6-dev
