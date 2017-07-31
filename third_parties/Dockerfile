@@ -6,4 +6,5 @@ RUN apt-get update && apt-get install -y \
 	freeglut3-dev \
 	libudev-dev \
 	libjpeg-dev \
-	libopenal-dev
+	libopenal-dev \
+	libflac-dev
