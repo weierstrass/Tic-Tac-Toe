@@ -9,4 +9,13 @@ RUN apt-get update && apt-get install -y \
 	libopenal-dev \
 	libflac-dev \
 	libfreetype6-dev \
-	libvorbis-dev
+	libvorbis-dev \
+	git \
+	cmake \
+	g++
+
+WORKDIR /src
+RUN git clone https://github.com/SFML/SFML.git
+
+WORKDIR /bin
+RUN cmake /src/SFML/ && make
