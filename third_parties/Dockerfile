@@ -8,4 +8,5 @@ RUN apt-get update && apt-get install -y \
 	libjpeg-dev \
 	libopenal-dev \
 	libflac-dev \
-	libfreetype6-dev
+	libfreetype6-dev \
+	libvorbis-dev
