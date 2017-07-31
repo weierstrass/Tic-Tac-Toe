@@ -5,4 +5,5 @@ RUN apt-get update && apt-get install -y \
 	libxrandr-dev \
 	freeglut3-dev \
 	libudev-dev \
-	libjpeg-dev
+	libjpeg-dev \
+	libopenal-dev
