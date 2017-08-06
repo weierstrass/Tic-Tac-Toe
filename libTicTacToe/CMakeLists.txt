@@ -8,6 +8,6 @@ file(GLOB_RECURSE SRCS src/*.cpp)
 # Look for all header files.
 file(GLOB_RECURSE HEADERS include/*.h)
 
-add_library(libTicTacToe ${SRCS} ${HEADERS})
+add_library(libTicTacToe ${SRCS} ${HEADERS} src/Game.cpp include/Game.h)
 
 target_include_directories(libTicTacToe PUBLIC include)

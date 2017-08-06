@@ -1,6 +1,10 @@
-//
-// Created by Tom on 05/08/2017.
-//
+/*!
+ *  \file Player.h
+ *  \brief The Player.
+ *  \author Tomas Gomes Cardoso
+ *  \version 1.0
+ *  \date 05 August 2017
+ */
 
 #include "../include/Player.h"
 #include <iostream>

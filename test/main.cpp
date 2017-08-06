@@ -1,10 +1,16 @@
-//
-// Created by Tom on 05/08/2017.
-//
+/*!
+ *  \file main.cpp
+ *  \brief The main for the tests.
+ *  \author Tomas Gomes Cardoso
+ *  \version 1.0
+ *  \date 05 August 2017
+ */
 
 #include "gtest/gtest.h"
 
-TEST(sample_test_case, sample_test)
+int main(int argc, char **argv)
 {
-  EXPECT_EQ(1, 1);
+  ::testing::InitGoogleTest(&argc, argv);
+  int ret = RUN_ALL_TESTS();
+  return ret;
 }

@@ -1,11 +1,6 @@
 cmake_minimum_required(VERSION 2.6.4)
 project(UnitTest)
 
-# Look for all source files.
-file(GLOB_RECURSE SRCS *.cpp)
-
-
-
 # We need thread support
 find_package(Threads REQUIRED)
 
@@ -47,3 +42,15 @@ set_target_properties(libgmock PROPERTIES
 # I couldn't make it work with INTERFACE_INCLUDE_DIRECTORIES
 include_directories("${source_dir}/googletest/include"
         "${source_dir}/googlemock/include")
+
+file(GLOB SRCS *.cpp)
+
+add_executable(unitTest ${SRCS} gameUnitTest.cpp)
+
+target_link_libraries(unitTest
+        libTicTacToe
+        libgtest
+        libgmock
+        )
+
+install(TARGETS unitTest DESTINATION bin)

@@ -9,6 +9,7 @@ set (TicTacToe_VERSION_MINOR 0)
 
 # Add the subdirectories containing cpp files.
 add_subdirectory(libTicTacToe)
+add_subdirectory(test)
 
 set(SRCS main.cpp)
 
