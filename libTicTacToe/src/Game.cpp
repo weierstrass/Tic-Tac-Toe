@@ -17,6 +17,13 @@ Game::~Game() {
 }
 
 void Game::start() {
+  while(!_board.complete()) {
+    std::cout << "Player " << _players[_currentPlayer].getId() << " is playing." << std::endl;
+    _board.askValue();
+    _currentPlayer = _currentPlayer == 0 ? 1 : 0;
+  }
+  _currentPlayer = _currentPlayer == 0 ? 1 : 0; // TODO: Because of the loop it will be changed to the loser, so here we set it back.
+  std::cout << "Player " << _players[_currentPlayer].getId() << " win !" << std::endl;
 }
 
 int Game::getCurrentPlayer() {

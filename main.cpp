@@ -10,7 +10,8 @@
 
 int main()
 {
-    Game game(2);
+  Game game(2);
+  game.start();
 
-    return 1;
+  return 1;
 }

@@ -9,6 +9,7 @@
 #ifndef TICTACTOE_GAME_H
 #define TICTACTOE_GAME_H
 
+#include "Board.h"
 #include <vector>
 
 class Player;
@@ -50,6 +51,7 @@ public:
 
 private:
     std::vector<Player> _players;  /*!< vector of players, the losers will be kicked out the vector. */
+    Board _board;
     int _currentPlayer;             /*!< ID of the current player. */
 
 };

@@ -18,34 +18,34 @@
 class Player {
 public:
 
-    /*!
-     *	\fn Player(int id)
-     *	\brief Constructor.
-     *	\param id The id of the player.
-     */
-    Player(int id);
+  /*!
+   *	\fn Player(int id)
+   *	\brief Constructor.
+   *	\param id The id of the player.
+   */
+  Player(int id);
 
-    /*!
-     *	\fn virtual ~Player()
-     *	\brief Destructor.
-     */
-    virtual ~Player();
+  /*!
+   *	\fn virtual ~Player()
+   *	\brief Destructor.
+   */
+  virtual ~Player();
 
-    /*!
-     *	\fn void displayPlayer()
-     *	\brief Method to display the Player's info.
-     */
-    void displayPlayer();
+  /*!
+   *	\fn void displayPlayer()
+   *	\brief Method to display the Player's info.
+   */
+  void displayPlayer();
 
-    /*!
-     *	\fn int getId()
-     *	\brief Return the ID of the player.
-     *	\return The ID of the player.
-     */
-    int getId();
+  /*!
+   *	\fn int getId()
+   *	\brief Return the ID of the player.
+   *	\return The ID of the player.
+   */
+  int getId();
 
 private:
-    int _id; /*!< The ID of the player. */
+  int _id; /*!< The ID of the player. */
 };
 
 

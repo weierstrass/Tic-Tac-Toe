@@ -6,7 +6,7 @@
  *  \date 05 August 2017
  */
 
-#include "../include/Player.h"
+#include "Player.h"
 #include <iostream>
 
 Player::Player(int id) : _id(id) {
@@ -15,9 +15,9 @@ Player::Player(int id) : _id(id) {
 Player::~Player() {}
 
 int Player::getId() {
-    return _id;
+  return _id;
 }
 
 void Player::displayPlayer() {
-    std::cout << "Player n°" << _id << std::endl;
+  std::cout << "Player n°" << _id << std::endl;
 }
