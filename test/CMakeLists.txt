@@ -1,47 +1,34 @@
-cmake_minimum_required(VERSION 2.6.4)
+cmake_minimum_required(VERSION 3.9)
 project(UnitTest)
 
 # We need thread support
 find_package(Threads REQUIRED)
 
-# Enable ExternalProject CMake module
-include(ExternalProject)
 
-# Download and install GoogleTest
-ExternalProject_Add(
-    gtest
-    URL https://github.com/google/googletest/archive/master.zip
-    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gtest
-    # Disable install step
-    INSTALL_COMMAND ""
-)
+# Download and unpack googletest at configure time
+configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
+execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+  WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/googletest-download" )
+execute_process(COMMAND "${CMAKE_COMMAND}" --build .
+  WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/googletest-download" )
 
-# Get GTest source and binary directories from CMake project
-ExternalProject_Get_Property(gtest source_dir binary_dir)
+# Prevent GoogleTest from overriding our compiler/linker options
+# when building with Visual Studio
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-# Create a libgtest target to be used as a dependency by test programs
-add_library(libgtest IMPORTED STATIC GLOBAL)
-add_dependencies(libgtest gtest)
+# Add googletest directly to our build. This adds
+# the following targets: gtest, gtest_main, gmock
+# and gmock_main
+add_subdirectory("${CMAKE_CURRENT_BINARY_DIR}/googletest-src"
+                 "${CMAKE_CURRENT_BINARY_DIR}/googletest-build")
 
-# Set libgtest properties
-set_target_properties(libgtest PROPERTIES
-    "IMPORTED_LOCATION" "${binary_dir}/googlemock/gtest/libgtest.a"
-    "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
-    )
-
-# Create a libgmock target to be used as a dependency by test programs
-add_library(libgmock IMPORTED STATIC GLOBAL)
-add_dependencies(libgmock gtest)
-
-# Set libgmock properties
-set_target_properties(libgmock PROPERTIES
-    "IMPORTED_LOCATION" "${binary_dir}/googlemock/libgmock.a"
-    "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
-    )
-
-# I couldn't make it work with INTERFACE_INCLUDE_DIRECTORIES
-include_directories("${source_dir}/googletest/include"
-    "${source_dir}/googlemock/include")
+# The gtest/gmock targets carry header search path
+# dependencies automatically when using CMake 2.8.11 or
+# later. Otherwise we have to add them here ourselves.
+if(CMAKE_VERSION VERSION_LESS 2.8.11)
+  include_directories("${gtest_SOURCE_DIR}/include"
+                      "${gmock_SOURCE_DIR}/include")
+endif()
 
 # Look for all source files.
 file(GLOB_RECURSE SRCS *.cpp)
@@ -53,8 +40,8 @@ add_executable(unitTest ${SRCS} ${HEADERS})
 
 target_link_libraries(unitTest
     libTicTacToe
-    libgtest
-    libgmock
+	gtest
+	gmock
     )
 
 install(TARGETS unitTest DESTINATION bin)
