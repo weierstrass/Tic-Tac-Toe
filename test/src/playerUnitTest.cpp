@@ -14,5 +14,5 @@ TEST(PlayUnitTest, getIDPlayer) {
   Player p2(2);
 
   EXPECT_EQ (1, p1.getId());
-  EXPECT_EQ (2, p2.getId());
+  EXPECT_EQ (3, p2.getId());
 }
