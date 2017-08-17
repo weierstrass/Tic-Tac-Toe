@@ -30,11 +30,7 @@ compiler:
   - clang
 script:
   - pwd
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make
-  - cd test
-  - ./unitTest
+  - cd scripts
+  - ./travis.sh
 
 sudo: false
