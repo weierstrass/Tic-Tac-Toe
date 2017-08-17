@@ -34,6 +34,7 @@ compiler:
 
 script:
   - pwd
+  - set -e
   - cd scripts
   - ./travis.sh
   
