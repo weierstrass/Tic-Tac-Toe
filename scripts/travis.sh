@@ -1,11 +1,11 @@
 #!/bin/sh
 
-saveCurrentFolder=`pwd`
-
 ./build.sh
 
+saveCurrentFolder=`pwd`
+
 echo "Step 4: Run Unit Tests."
-cd test
+cd ../build/test
 ./unitTest
 
 cd $saveCurrentFolder
