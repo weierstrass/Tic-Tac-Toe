@@ -4,8 +4,10 @@
 
 saveCurrentFolder=`pwd`
 
+set -evx
+
 echo "Step 4: Run Unit Tests."
 cd ../build/test
-./unitTest -race -p 1 ${TESTPATHS} || FAILURE=1
+./unitTest
 
 cd $saveCurrentFolder
