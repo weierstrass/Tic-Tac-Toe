@@ -40,36 +40,30 @@ public:
   bool complete() const;
 
   /*!
-   *	\fn void askValue()
-   *	\brief Ask to the current player a value and the position to put it in the board.
-   */
-  void askValue();
-
-  /*!
    *	\fn void resetBoard()
    *	\brief Reset the board.
    */
   void resetBoard();
 
-protected:
+  /*!
+  *	\fn char getValueAt(const int row, const int column) const
+  *	\brief Get the value from the given place of the board.
+  *	\param row The row where we want to put the value.
+  *	\param column The column where we want to put the value.
+  *	\return The value wanted.
+  */
+  char getValueAt(const int row, const int column) const;
 
   /*!
-   *	\fn void setValueAt(const int row, const int column, const char value)
-   *	\brief Set a value in the board at a given place.
-   *	\param row The row where we want to put the value.
-   *	\param column The column where we want to put the value.
-   *	\param value The value itself.
-   */
+  *	\fn void setValueAt(const int row, const int column, const char value)
+  *	\brief Set a value in the board at a given place.
+  *	\param row The row where we want to put the value.
+  *	\param column The column where we want to put the value.
+  *	\param value The value itself.
+  */
   void setValueAt(const int row, const int column, const char value);
 
-  /*!
-   *	\fn char getValueAt(const int row, const int column) const
-   *	\brief Get the value from the given place of the board.
-   *	\param row The row where we want to put the value.
-   *	\param column The column where we want to put the value.
-   *	\return The value wanted.
-   */
-  char getValueAt(const int row, const int column) const;
+protected:
 
   /*!
    *	\fn bool checkRow() const

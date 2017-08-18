@@ -76,27 +76,6 @@ char Board::getValueAt(const int row, const int column) const{
   return _board[row][column];
 }
 
-void Board::askValue() {
-  int row, column;
-  char value;
-  bool pass = false;
-
-  std::cout << "Give a Row, a Column and a Value: " << std::endl;
-  while (!pass) {
-    std::cin >> row;
-    std::cin >> column;
-    std::cin >> value;
-
-    if (_board[row][column] == ' ') {
-      setValueAt(row, column, value);
-      pass = true;
-    }
-    else {
-      std::cout << "There is already something there, try another cell: " << std::endl;
-    }
-  }
-}
-
 void Board::resetBoard() {
   std::fill((char*)_board, (char*)_board + sizeof(_board) / sizeof(char), ' ');
   _nbPassage = 0;

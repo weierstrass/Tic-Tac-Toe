@@ -19,7 +19,7 @@ Game::~Game() {
 void Game::start() {
   while(!_board.complete()) {
     std::cout << "Player " << _players[_currentPlayer].getId() << " is playing." << std::endl;
-    _board.askValue();
+    askValue();
     _currentPlayer = _currentPlayer == 0 ? 1 : 0;
   }
   _currentPlayer = _currentPlayer == 0 ? 1 : 0; // TODO: Because of the loop it will be changed to the loser, so here we set it back.
@@ -28,4 +28,25 @@ void Game::start() {
 
 int Game::getCurrentPlayer() {
   return _players[_currentPlayer].getId();
+}
+
+void Game::askValue() {
+  int row, column;
+  char value;
+  bool pass = false;
+
+  std::cout << "Give a Row, a Column and a Value: " << std::endl;
+  while (!pass) {
+    std::cin >> row;
+    std::cin >> column;
+    std::cin >> value;
+
+    if (_board.getValueAt(row, column) == ' ') {
+      _board.setValueAt(row, column, value);
+      pass = true;
+    }
+    else {
+      std::cout << "There is already something there, try another cell: " << std::endl;
+    }
+  }
 }
