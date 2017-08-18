@@ -4,6 +4,8 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/TomasGC/Tic-Tac-Toe/badge.svg?branch=master)](https://coveralls.io/github/TomasGC/Tic-Tac-Toe?branch=master)
 
+[![Travis](https://travis-ci.org/TomasGC/Tic-Tac-Toe/settings)](https://travis-ci.org/TomasGC/Tic-Tac-Toe/settings)
+
 ## Welcome to Tic Tac Toe page
 
 This project is just a pretext to put in place few things (CI, Code review, Unit Tests, etc) but also to work with Open Source things and with a splitted team.
