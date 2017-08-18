@@ -2,7 +2,7 @@
 
 ./build.sh
 
-saveCurrentFolder=`pwd`
+saveCurrentFolder=$(pwd)
 
 set -evx
 
