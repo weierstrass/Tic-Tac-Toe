@@ -1,6 +1,6 @@
 #!/bin/sh
 
-saveCurrentFolder=`pwd`
+saveCurrentFolder=$(pwd)
 
 echo "Compilation started."
 
