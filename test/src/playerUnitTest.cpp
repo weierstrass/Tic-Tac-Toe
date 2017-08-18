@@ -9,7 +9,8 @@
 #include "gtest/gtest.h"
 #include "Player.h"
 
-TEST(PlayUnitTest, getIDPlayer) {
+TEST(PlayUnitTest, getIDPlayer)
+{
   Player p1(1);
   Player p2(2);
 

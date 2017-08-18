@@ -9,7 +9,8 @@
 #include "gtest/gtest.h"
 #include "Game.h"
 
-TEST(GameUnitTest, getIDPlayer) {
+TEST(GameUnitTest, getIDPlayer)
+{
   Game game(2);
 
   EXPECT_EQ (1, game.getCurrentPlayer());

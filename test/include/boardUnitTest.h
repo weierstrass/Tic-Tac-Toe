@@ -10,7 +10,6 @@
 #define TICTACTOE_BOARDUNITTEST_H
 
 #include "Board.h"
-#include <gtest/gtest.h>
 
 /*!
  *  \class BoardUnitTest
@@ -18,7 +17,9 @@
  *
  *  This class is there to test the board.
  */
-class BoardUnitTest : public ::testing::Test, public Board {
+class BoardUnitTest : public ::testing::Test
+{
+  Board _board;
 public:
   /*!
    *	\fn virtual void TearDown()
