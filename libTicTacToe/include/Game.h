@@ -49,6 +49,12 @@ public:
      */
     int getCurrentPlayer();
 
+    /*!
+    *	\fn void askValue()
+    *	\brief Ask to the current player a value and the position to put it in the board.
+    */
+    void askValue();
+
 private:
     std::vector<Player> _players;  /*!< vector of players, the losers will be kicked out the vector. */
     Board _board;

@@ -6,107 +6,120 @@
  *  \date 06 August 2017
  */
 
-#include "../include/boardUnitTest.h"
+#include "Board.h"
+
+#include <gtest/gtest.h>
 
 using namespace testing;
 
-void BoardUnitTest::TearDown() {
-  resetBoard();
+TEST(BoardUnitTest, getValueFromBoardTest)
+{
+  Board board;
+
+  board.setValueAt(0,0,Board::Cell::circle);
+  board.setValueAt(1,1,Board::Cell::cross);
+
+  EXPECT_EQ(Board::Cell::circle, board.getValueAt(0,0));
+  EXPECT_EQ(Board::Cell::cross, board.getValueAt(1,1));
 }
 
-TEST_F(BoardUnitTest, getValueFromBoardTest) {
-  setValueAt(0,0,'o');
-  setValueAt(1,1,'x');
+TEST(BoardUnitTest, checkRowTest)
+{
+  Board board;
 
-  EXPECT_EQ('o', getValueAt(0,0));
-  EXPECT_EQ('x', getValueAt(1,1));
+  board.setValueAt(0,0,Board::Cell::cross);
+  board.setValueAt(0,1,Board::Cell::cross);
+  board.setValueAt(0,2,Board::Cell::cross);
+
+  EXPECT_EQ(true, board.checkRow());
+
+  board.setValueAt(0,0,Board::Cell::circle);
+  board.setValueAt(0,1,Board::Cell::circle);
+  board.setValueAt(0,2,Board::Cell::cross);
+  EXPECT_EQ(false, board.checkRow());
 }
 
-TEST_F(BoardUnitTest, checkRowTest) {
-  setValueAt(0,0,'x');
-  setValueAt(0,1,'x');
-  setValueAt(0,2,'x');
+TEST(BoardUnitTest, checkColumnTest)
+{
+  Board board;
 
-  EXPECT_EQ(true, checkRow());
+  board.setValueAt(0,0,Board::Cell::cross);
+  board.setValueAt(1,0,Board::Cell::cross);
+  board.setValueAt(2,0,Board::Cell::cross);
 
-  setValueAt(0,0,'f');
-  setValueAt(0,1,'f');
-  setValueAt(0,2,'x');
-  EXPECT_EQ(false, checkRow());
+  EXPECT_EQ(true, board.checkColumn());
+
+  board.setValueAt(0,0,Board::Cell::circle);
+  board.setValueAt(1,0,Board::Cell::circle);
+  board.setValueAt(2,0,Board::Cell::cross);
+  EXPECT_EQ(false, board.checkColumn());
 }
 
-TEST_F(BoardUnitTest, checkColumnTest) {
-  setValueAt(0,0,'x');
-  setValueAt(1,0,'x');
-  setValueAt(2,0,'x');
+TEST(BoardUnitTest, checkDiagonalTest)
+{
+  Board board;
 
-  EXPECT_EQ(true, checkColumn());
+  board.setValueAt(0,0,Board::Cell::cross);
+  board.setValueAt(1,1,Board::Cell::cross);
+  board.setValueAt(2,2,Board::Cell::cross);
 
-  setValueAt(0,0,'f');
-  setValueAt(1,0,'f');
-  setValueAt(2,0,'x');
-  EXPECT_EQ(false, checkColumn());
+  EXPECT_EQ(true, board.checkDiagonal());
+
+  board.setValueAt(0,0,Board::Cell::circle);
+  board.setValueAt(1,1,Board::Cell::circle);
+  board.setValueAt(2,2,Board::Cell::cross);
+  EXPECT_EQ(false, board.checkColumn());
 }
 
-TEST_F(BoardUnitTest, checkDiagonalTest) {
-  setValueAt(0,0,'x');
-  setValueAt(1,1,'x');
-  setValueAt(2,2,'x');
+TEST(BoardUnitTest, checkCompleteTest)
+{
+  Board board;
 
-  EXPECT_EQ(true, checkDiagonal());
-
-  setValueAt(0,0,'f');
-  setValueAt(1,1,'f');
-  setValueAt(2,2,'x');
-  EXPECT_EQ(false, checkColumn());
-}
-
-TEST_F(BoardUnitTest, checkCompleteTest) {
   // Complete by row.
-  setValueAt(0,0,'x');
-  setValueAt(0,1,'x');
-  setValueAt(0,2,'x');
+  board.setValueAt(0,0,Board::Cell::cross);
+  board.setValueAt(0,1,Board::Cell::cross);
+  board.setValueAt(0,2,Board::Cell::cross);
 
-  EXPECT_EQ(true, complete());
+  EXPECT_EQ(true, board.complete());
 
 
   // Complete by column.
-  resetBoard();
+  board = Board();
 
-  setValueAt(0,0,'x');
-  setValueAt(1,0,'x');
-  setValueAt(2,0,'x');
+  board.setValueAt(0,0,Board::Cell::cross);
+  board.setValueAt(1,0,Board::Cell::cross);
+  board.setValueAt(2,0,Board::Cell::cross);
 
-  EXPECT_EQ(true, complete());
+  EXPECT_EQ(true, board.complete());
 
 
   // Complete by diagonal.
-  resetBoard();
+  board = Board();
 
-  setValueAt(0,0,'x');
-  setValueAt(1,1,'x');
-  setValueAt(2,2,'x');
+  board.setValueAt(0,0,Board::Cell::cross);
+  board.setValueAt(1,1,Board::Cell::cross);
+  board.setValueAt(2,2,Board::Cell::cross);
 
-  EXPECT_EQ(true, complete());
+  EXPECT_EQ(true, board.complete());
 
 
   // Not full.
-  resetBoard();
+  board = Board();
 
-  setValueAt(0,0,'a');
+  board.setValueAt(0,0,Board::Cell::cross);
 
-  EXPECT_EQ(false, complete());
+  EXPECT_EQ(false, board.complete());
 
 
   // Complete because it is full.
-  setValueAt(0,1,'z');
-  setValueAt(0,2,'e');
-  setValueAt(1,0,'r');
-  setValueAt(1,1,'t');
-  setValueAt(1,2,'y');
-  setValueAt(2,0,'u');
-  setValueAt(2,1,'i');
-  setValueAt(2,2,'o');
+  board.setValueAt(0,1, Board::Cell::cross);
+  board.setValueAt(0,2, Board::Cell::cross);
+  board.setValueAt(1,0, Board::Cell::cross);
+  board.setValueAt(1,1, Board::Cell::cross);
+  board.setValueAt(1,2, Board::Cell::cross);
+  board.setValueAt(2,0, Board::Cell::cross);
+  board.setValueAt(2,1,Board::Cell::cross);
+  board.setValueAt(2,2,Board::Cell::circle);
 
-  EXPECT_EQ(true, complete());
+  EXPECT_EQ(true, board.complete());
 }
