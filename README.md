@@ -4,7 +4,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/TomasGC/Tic-Tac-Toe/badge.svg?branch=master)](https://coveralls.io/github/TomasGC/Tic-Tac-Toe?branch=master)
 
-[![Travis](https://travis-ci.org/TomasGC/Tic-Tac-Toe/settings)](https://travis-ci.org/TomasGC/Tic-Tac-Toe/settings)
+[![Build Status](https://travis-ci.org/TomasGC/Tic-Tac-Toe.svg?branch=master)](https://travis-ci.org/TomasGC/Tic-Tac-Toe)
 
 ## Welcome to Tic Tac Toe page
 
