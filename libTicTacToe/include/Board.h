@@ -9,6 +9,7 @@
 #ifndef TICTACTOE_BOARD_H
 #define TICTACTOE_BOARD_H
 
+#include <array>
 #include <assert.h>
 #include <iostream>
 
@@ -46,12 +47,6 @@ public:
    *	\return True if it is, false elsewhere.
    */
   bool complete() const;
-
-  /*!
-   *	\fn void resetBoard()
-   *	\brief Reset the board.
-   */
-  void resetBoard();
 
   /*!
   *	\fn cell board.getValueAt(const int row, const int column) const
@@ -93,8 +88,7 @@ public:
   bool checkDiagonal() const;
 
 private:
-
-  Cell _board[3][3];    /*!< The board for Tic Tac Toe game, a 3*3 table. */
+  std::array<std::array<Cell, 3>, 3> _board;    /*!< The board for Tic Tac Toe game, a 3*3 table. */
   int _nbPassage;       /*!< The number of value set in the board. */
 };
 

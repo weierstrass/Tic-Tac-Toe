@@ -10,8 +10,8 @@
 
 Board::Board() : _nbPassage(0)
 {
-  std::fill((Cell*)_board, (Cell*)_board + sizeof(_board) / sizeof(Cell), Cell::empty);
-}
+  _board = { Cell::empty };
+};
 
 Board::~Board()
 {
@@ -89,13 +89,6 @@ Board::Cell Board::getValueAt(const int row, const int column) const
 {
   return _board[row][column];
 }
-
-void Board::resetBoard()
-{
-  std::fill((Cell*)_board, (Cell*)_board + sizeof(_board) / sizeof(Cell), Cell::empty);
-  _nbPassage = 0;
-}
-
 
 std::istream& operator>>(std::istream& is, Board::Cell& cell)
 {
