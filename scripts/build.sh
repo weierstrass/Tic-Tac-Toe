@@ -14,7 +14,7 @@ echo "Step 2: Run CMake."
 cmake ..
 
 echo "Step 3: Run make."
-make
+make -j8
 
 echo "Compilation ended."
 

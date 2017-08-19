@@ -7,6 +7,9 @@ saveCurrentFolder=$(pwd)
 set -evx
 
 echo "Step 4: Code coverage."
+make -j8 lcov
+ctest
+
 # Creating report
 cd ${TRAVIS_BUILD_DIR}
 lcov --directory . --capture --output-file coverage.info # capture coverage info
