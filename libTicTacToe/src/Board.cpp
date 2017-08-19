@@ -7,11 +7,12 @@
  */
 
 #include "Board.h"
+#include "board/BoardIterator.h"
 
 Board::Board() : _nbPassage(0)
 {
   _board = { Cell::empty };
-};
+}
 
 Board::~Board()
 {
@@ -68,6 +69,8 @@ bool Board::checkDiagonal() const
 
 bool Board::complete() const
 {
+  std::find(begin(), end(), Cell::empty) != end();
+
   if (_nbPassage == 9)
     return true;
   else if (checkRow())
@@ -79,6 +82,7 @@ bool Board::complete() const
 
   return false;
 }
+
 void Board::setValueAt(const int row, const int column, const Cell value)
 {
   _board[row][column] = value;
@@ -88,6 +92,18 @@ void Board::setValueAt(const int row, const int column, const Cell value)
 Board::Cell Board::getValueAt(const int row, const int column) const
 {
   return _board[row][column];
+}
+
+Board::const_iterator Board::begin() const
+{
+  return BoardIterator(_board);
+}
+
+Board::const_iterator Board::end() const
+{
+  BoardIterator it(_board);
+  it.end();
+  return it;
 }
 
 std::istream& operator>>(std::istream& is, Board::Cell& cell)

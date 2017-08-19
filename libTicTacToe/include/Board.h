@@ -13,6 +13,9 @@
 #include <assert.h>
 #include <iostream>
 
+class BoardIterator;
+
+
 /*!
  *  \class Board
  *	\brief Object board.
@@ -86,6 +89,11 @@ public:
    *	\return True if it is, false elsewhere.
    */
   bool checkDiagonal() const;
+  
+  typedef BoardIterator const_iterator;
+
+  const_iterator begin() const;
+  const_iterator end() const;
 
 private:
   std::array<std::array<Cell, 3>, 3> _board;    /*!< The board for Tic Tac Toe game, a 3*3 table. */
