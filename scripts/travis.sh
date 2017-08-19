@@ -7,7 +7,7 @@ saveCurrentFolder=$(pwd)
 set -evx
 
 echo "Step 4: Code coverage."
-make -j8 lcov
+make -j8 TicTacToe_Coverage
 ctest
 
 # Creating report
