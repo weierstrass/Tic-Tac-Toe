@@ -95,3 +95,27 @@ void Board::resetBoard()
   std::fill((Cell*)_board, (Cell*)_board + sizeof(_board) / sizeof(Cell), Cell::empty);
   _nbPassage = 0;
 }
+
+
+std::istream& operator>>(std::istream& is, Board::Cell& cell)
+{
+  char input = '\0';
+  is >> input;
+  if (input == ' ')
+  {
+    cell = Board::Cell::empty;
+  }
+  else if (input == 'x')
+  {
+    cell = Board::Cell::cross;
+  }
+  else if (input == 'o')
+  {
+    cell = Board::Cell::circle;
+  }
+  else
+  {
+    assert(!"Character cannot be converted to Cell.");
+  }
+  return is;
+}

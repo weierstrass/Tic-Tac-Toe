@@ -98,31 +98,7 @@ private:
   int _nbPassage;       /*!< The number of value set in the board. */
 };
 
-namespace
-{
-  std::istream& operator>>(std::istream& is, Board::Cell& cell)
-  {
-    char input = '\0';
-    is >> input;
-    if (input == ' ')
-    {
-      cell = Board::Cell::empty;
-    }
-    else if (input == 'x')
-    {
-      cell = Board::Cell::cross;
-    }
-    else if (input == 'o')
-    {
-      cell = Board::Cell::circle;
-    }
-    else
-    {
-      assert(!"Character cannot be converted to Cell.");
-    }
-    return is;
-  }
-}
 
+std::istream& operator>>(std::istream& is, Board::Cell& cell);
 
 #endif //TICTACTOE_BOARD_H
