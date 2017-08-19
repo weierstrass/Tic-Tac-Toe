@@ -1,6 +1,7 @@
 language: cpp
 sudo: required
-os: linux
+os: 
+  - linux
 sudo: false
 
 addons:
@@ -17,6 +18,7 @@ addons:
       - g++-4.9
       - clang-3.7
       - valgrind
+      - lcov
 
 install:
 # /usr/bin/gcc is 4.6 always, but gcc-X.Y is available.
