@@ -102,7 +102,7 @@ namespace
 {
   std::istream& operator>>(std::istream& is, Board::Cell& cell)
   {
-    char input = '\o';
+    char input = '\0';
     is >> input;
     if (input == ' ')
     {
